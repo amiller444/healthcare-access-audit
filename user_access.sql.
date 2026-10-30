@@ -1,0 +1,23 @@
+-- Healthcare Access Audit: sample data
+-- All names and data are FAKE.
+
+CREATE TABLE user_access (
+  user_id INTEGER PRIMARY KEY,
+  full_name TEXT,
+  job_role TEXT,
+  system_name TEXT,
+  access_level TEXT,
+  last_login DATE
+);
+
+INSERT INTO user_access VALUES
+(1,  'Alex Sample',    'Office Manager',     'Dental Software', 'Admin',    '2026-10-27'),
+(2,  'Jordan Example', 'Front Desk',         'Dental Software', 'Standard', '2026-10-28'),
+(3,  'Casey Demo',     'Dental Assistant',   'Dental Software', 'Standard', '2026-10-26'),
+(4,  'Taylor Test',    'Hygienist',          'Dental Software', 'Clinical', '2026-10-27'),
+(5,  'Morgan Fake',    'Front Desk',         'Dental Software', 'Admin',    '2026-10-20'),
+(6,  'Riley Sample',   'Billing Specialist', 'Billing System',  'Billing',  '2026-10-22'),
+(7,  'Jamie Example',  'Dentist',            'Dental Software', 'Clinical', '2026-10-28'),
+(8,  'Drew Demo',      'Former Employee',    'Dental Software', 'Standard', '2026-03-14'),
+(9,  'Sam Test',       'Billing Specialist', 'Billing System',  'Admin',    '2026-09-30'),
+(10, 'Quinn Fake',     'Front Desk',         'Dental Software', 'Standard', '2026-06-02');
