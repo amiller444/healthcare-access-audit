@@ -1,20 +1,20 @@
--- Healthcare Access Audit: JOIN queries (fake data)
+-- Healthcare Access Audit: HR employee records (FAKE data)
+-- Matches user_access by user_id
 
--- 1. Terminated employees who still have system access
-SELECT u.full_name, u.access_level, e.employment_status, e.termination_date
-FROM user_access u
-JOIN employees e ON u.user_id = e.user_id
-WHERE e.employment_status = 'Terminated';
+CREATE TABLE employees (
+  user_id INTEGER PRIMARY KEY,
+  employment_status TEXT,
+  hire_date DATE,
+  termination_date DATE
+);
 
--- 2. Anyone who logged in AFTER their termination date
-SELECT u.full_name, e.termination_date, u.last_login
-FROM user_access u
-JOIN employees e ON u.user_id = e.user_id
-WHERE e.termination_date IS NOT NULL
-  AND u.last_login > e.termination_date;
-
--- 3. Accounts with no matching HR record
-SELECT u.full_name, u.job_role, u.access_level
-FROM user_access u
-LEFT JOIN employees e ON u.user_id = e.user_id
-WHERE e.user_id IS NULL;
+INSERT INTO employees VALUES
+(1,  'Active',     '2019-04-01', NULL),
+(2,  'Active',     '2022-08-15', NULL),
+(3,  'Active',     '2023-02-06', NULL),
+(5,  'Active',     '2024-01-22', NULL),
+(6,  'Active',     '2021-06-14', NULL),
+(7,  'Active',     '2018-09-10', NULL),
+(8,  'Terminated', '2022-05-02', '2026-02-27'),
+(9,  'Active',     '2020-11-30', NULL),
+(10, 'Active',     '2025-03-17', NULL);
